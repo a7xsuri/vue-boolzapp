@@ -3,24 +3,87 @@
     background-color: aquamarine;
 }
 .Background-Bot{
-    height:80vh;
+    height:90vh;
 }
 section{
-    background-color: blue;
-    height:80vh;
-    margin-top:-50px;
+    height:90vh;
+    margin-top:-100px;
 }
+
 .container {
     background-color: rgb(255, 213, 0);
-    height:80vh;
+    height:90vh;
 }
 
 .m{
     background-color: chartreuse;
-    height: 80vh;
+    height: 90vh;
 }
 
 .c{
     background-color: brown;
-    height: 80vh;
+    height: 90vh;
+}
+
+.header .row {
+    padding-top: 5px;
+}
+
+.header{
+    background-color: rgb(204, 204, 204);
+}
+
+.avatar{
+    width:25%;
+    border-radius: 30px;
+    float: left;
+}
+
+.photo-avatar{
+    width: 50%;
+    padding-left: 20px;
+}
+
+.name-utent {
+    float: left;
+    padding-left: 10px;
+    width: 50px;
+    font-weight: bold;
+    line-height: 3;
+}
+
+.Icons{
+    width: 50%;
+    line-height: 3;
+    text-align: right;
+}
+
+i{
+    font-size: 20px;
+    padding:0 10px;
+}
+
+.notifica{
+background-color: rgb(141, 197, 234);
+height: 70px;
+padding-left: 10px;
+}
+
+.notifica i {
+    background-color: white;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 2;
+    border-radius: 50px;
+    height: 45px;
+    margin-top:10px;
+}
+
+.notifica p {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+.notifica p a {
+    color:gray;
 }
