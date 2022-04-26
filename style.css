@@ -1,0 +1,26 @@
+.Background-Top{
+    height:20vh;
+    background-color: aquamarine;
+}
+.Background-Bot{
+    height:80vh;
+}
+section{
+    background-color: blue;
+    height:80vh;
+    margin-top:-50px;
+}
+.container {
+    background-color: rgb(255, 213, 0);
+    height:80vh;
+}
+
+.m{
+    background-color: chartreuse;
+    height: 80vh;
+}
+
+.c{
+    background-color: brown;
+    height: 80vh;
+}
