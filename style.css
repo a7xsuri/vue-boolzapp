@@ -33,7 +33,7 @@ section{
     background-color: rgb(204, 204, 204);
 }
 
-.avatar{
+.avatar-io{
     width:25%;
     border-radius: 30px;
     float: left;
@@ -44,7 +44,7 @@ section{
     padding-left: 20px;
 }
 
-.name-utent {
+.name-utent-io {
     float: left;
     padding-left: 10px;
     width: 50px;
@@ -86,4 +86,32 @@ padding-left: 10px;
 }
 .notifica p a {
     color:gray;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li{
+    height: calc(100% / 8 );
+}
+
+.clearfix{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.avatars{
+    width: 12%;
+    float: left;
+    border-radius: 50px;
+}
+
+.name-utents {
+    float: left;
+    padding-left: 10px;
+    width: 200px;
 }
