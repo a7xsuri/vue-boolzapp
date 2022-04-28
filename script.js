@@ -1,5 +1,5 @@
 const app = new Vue({
-    el:"#contacts",
+    el:"#app",
     data:{
         contacts: [
             {
@@ -163,7 +163,36 @@ const app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
+        ActiveIndex:0,
+    },
+    methods:{
+        changeOnClick(contact, index){
+            this.ActiveIndex = index;
+            console.log(this.contacts.messages);
+        },
+        submit(){
+            if( this.NuovoMessaggio === ''){
+
+            }else{
+            const messaggio = {
+                date: dayjs().format('H:m'),
+                status: 'sent',
+                message: this.NuovoMessaggio,
+            }
+            this.contacts[this.ActiveIndex].messages.push(messaggio),
+            this.NuovoMessaggio = ''
+        }
+        },
+        Find(){
+            this.contacts.forEach((contact) =>{
+                if(contact.name.toLowerCase().includes(this.CercaPersona.toLowerCase())){
+                    contact.visible == true
+                }else{
+                    contact.visible == false;
+                }
+            })
+        }
     }
 })
 

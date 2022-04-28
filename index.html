@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://kit.fontawesome.com/ad826b4a52.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
@@ -14,43 +15,74 @@
     <div class="Background-Top"></div>
     <div class="Background-Bot">
         <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-4 m px-0">
-                        <div class="header">
-                            <div class="row">
-                                <div class="photo-avatar">
-                                    <img src="./img/avatar_io.jpg" alt="" class="avatar-io">
-                                    <p class="name-utent-io">Sofia</p>
-                                </div>
-                                <div class="Icons">
-                                    <i class="fa-solid fa-spinner"></i>
-                                    <i class="fa-solid fa-message"></i>
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+            <div id="app">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4 m px-0">
+                            <div class="header">
+                                <div class="row">
+                                    <div class="photo-avatar">
+                                        <img src="./img/avatar_io.jpg" alt="" class="avatar-io">
+                                        <p class="name-utent-io">Sofia</p>
+                                    </div>
+                                    <div class="Icons">
+                                        <i class="fa-solid fa-spinner"></i>
+                                        <i class="fa-solid fa-message"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="notifica">
+                                <i class="fa-solid fa-bell-slash"></i>
+                                <p class="my-0">Ricevi notifiche di nuovi messaggi<br> <a href="#">attiva notifiche desktop</a></p>
+                            </div>
+                                <div class="input-group flex-nowrap mini-p">
+                                    <span @click="Find" class="input-group-text" id="addon-wrapping"><i @click="Find" class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input type="text" v-model="CercaPersona" v-on:keyup.enter="Find" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping">
+                                </div>
+                            <div id="contacts">
+                                <ul tabindex="0"class="px-0">
+                                    <li v-if="contact.visible" v-for="(contact, index) in contacts" :key="index" class="ps-2" :class="{'active': index === ActiveIndex}" @click="changeOnClick(contact, index)">
+                                        <img v-bind:src="'./img/avatar' + contact.avatar + '.jpg' " class="avatars" />
+                                        <div class="name-utents">
+                                            <p class="my-0">{{contact.name}}</p>
+                                            <span>ultimo messaggio inviato</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="notifica">
-                            <i class="fa-solid fa-bell-slash"></i>
-                            <p class="my-0">Ricevi notifiche di nuovi messaggi<br> <a href="#">attiva notifiche desktop</a></p>
-                        </div>
-                        <div class="search">
-
-                        </div>
-                        <div id="contacts">
-                            <ul tabindex="0"class="px-0">
-                                <li v-for="(contact, index) in contacts" :key="index" class="my-1 ps-2">
-                                    <img v-bind:src="'./img/avatar' + contact.avatar + '.jpg' " class="avatars" />
-                                    <div class="name-utents">
-                                        <p class="my-0">{{contact.name}}</p>
-                                        <span>ultimo messaggio inviato</span>
+                        <div class="col-8 c px-0 position-relative">
+                            <div class="header">
+                                <div class="row">
+                                    <div class="photo-avatar ">
+                                        <img :src="'./img/avatar' + contacts[ActiveIndex].avatar + '.jpg' " alt="" class="avatars pt-1" >
+                                        <div class="name-utents">
+                                            <p class="my-0">{{contacts[ActiveIndex].name}}</p>
+                                            <p>ultimo accesso il {{contacts[ActiveIndex].date}}</p>
+                                        </div>
                                     </div>
-                                </li>
-                            </ul>
+                                    <div class="Icons ">
+                                        <i class="fa-solid fa-spinner"></i>
+                                        <i class="fa-solid fa-message"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main">
+                                <div class="messagges" v-for="(message,index) in contacts[ActiveIndex].messages" :key="messages" >
+                                    <div :class="[message.status]">
+                                        <p class="my-0">{{message.message}}</p>
+                                        <p class="data my-0 pe-1">{{message.date}}</p>
+                                    </div>
+                                </div>
+                                <div class="input-group flex-nowrap  mini-p bottom">
+                                    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input type="text" class="form-control" v-on:keyup.enter="submit" v-model="NuovoMessaggio" placeholder="Scrivi un messaggio" aria-label="Scrivi un messaggio" aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                                
                         </div>
-                    </div>
-                    <div class="col-8 c">
-                        
                     </div>
                 </div>
             </div>
