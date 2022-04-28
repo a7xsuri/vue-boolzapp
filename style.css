@@ -135,8 +135,9 @@ li{
 
 .main{
     width: 100%;
-    overflow-y: auto;
-    height: 100%;
+    overflow-y: scroll;
+    height: 85%;
+    padding-bottom: 15px;
 }
 
 .messagges{

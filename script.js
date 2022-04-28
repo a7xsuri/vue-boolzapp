@@ -171,6 +171,7 @@ const app = new Vue({
             this.ActiveIndex = index;
             console.log(this.contacts.messages);
         },
+
         submit(){
             if( this.NuovoMessaggio === ''){
 
@@ -182,8 +183,19 @@ const app = new Vue({
             }
             this.contacts[this.ActiveIndex].messages.push(messaggio),
             this.NuovoMessaggio = ''
+            setTimeout(this.Risposta, 1000); 
         }
+    },
+
+        Risposta(){
+            const messaggioComputer = {
+                date: dayjs().format('H:m'),
+                status: 'received',
+                message: 'ok',
+            }
+            this.contacts[this.ActiveIndex].messages.push(messaggioComputer)
         },
+
         Find(){
             this.contacts.forEach((contact) =>{
                 if(contact.name.toLowerCase().includes(this.CercaPersona.toLowerCase())){
@@ -195,5 +207,6 @@ const app = new Vue({
         }
     }
 })
+
 
 
