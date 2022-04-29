@@ -171,7 +171,6 @@ const app = new Vue({
     methods:{
         changeOnClick(contact, index){
             this.ActiveIndex = index;
-            console.log(this.contacts.messages);
         },
 
         submit(){
@@ -189,6 +188,10 @@ const app = new Vue({
         }
     },
 
+    deleteMessage(index){
+        this.contacts[this.ActiveIndex].messages.splice(index, 1)
+        console.log(this.contacts[this.ActiveIndex].messages)
+    },
         Risposta(){
             const messaggioComputer = {
                 date: dayjs().format('H:m'),
