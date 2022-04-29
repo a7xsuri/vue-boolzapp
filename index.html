@@ -37,12 +37,12 @@
                                 <p class="my-0">Ricevi notifiche di nuovi messaggi<br> <a href="#">attiva notifiche desktop</a></p>
                             </div>
                                 <div class="input-group flex-nowrap mini-p">
-                                    <span @click="Find" class="input-group-text" id="addon-wrapping"><i @click="Find" class="fa-solid fa-magnifying-glass"></i></span>
-                                    <input type="text" v-model="CercaPersona" v-on:keyup.enter="Find" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping">
+                                    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input type="text" v-model="CercaPersona"  class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping">
                                 </div>
                             <div id="contacts">
                                 <ul tabindex="0"class="px-0">
-                                    <li v-if="contact.visible" v-for="(contact, index) in contacts" :key="index" class="ps-2" :class="{'active': index === ActiveIndex}" @click="changeOnClick(contact, index)">
+                                    <li v-for="(contact, index) in Find" :key="contact.id" class="ps-2 border" :class="{'active': index === ActiveIndex}" @click="changeOnClick(contact, index)">
                                         <img v-bind:src="'./img/avatar' + contact.avatar + '.jpg' " class="avatars" />
                                         <div class="name-utents">
                                             <p class="my-0">{{contact.name}}</p>
@@ -72,6 +72,19 @@
                             <div class="main">
                                 <div class="messagges" v-for="(message,index) in contacts[ActiveIndex].messages" :key="messages" >
                                     <div :class="[message.status]">
+                                        <nav class="navbar navbar-expand-lg navbar-light py-0 position-absolute">
+                                            
+                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                                        <li class="nav-item dropdown ">
+                                                            <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                <li><a class="dropdown-item" href="#">elimina</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                        </nav>
                                         <p class="my-0">{{message.message}}</p>
                                         <p class="data my-0 pe-1">{{message.date}}</p>
                                     </div>

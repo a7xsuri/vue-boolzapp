@@ -165,6 +165,8 @@ const app = new Vue({
             }
         ],
         ActiveIndex:0,
+        show: false,
+        CercaPersona:'',
     },
     methods:{
         changeOnClick(contact, index){
@@ -196,16 +198,26 @@ const app = new Vue({
             this.contacts[this.ActiveIndex].messages.push(messaggioComputer)
         },
 
-        Find(){
-            this.contacts.forEach((contact) =>{
-                if(contact.name.toLowerCase().includes(this.CercaPersona.toLowerCase())){
-                    contact.visible == true
-                }else{
-                    contact.visible == false;
-                }
-            })
+        // Find(){
+        //     this.contacts.forEach((contact) =>{
+        //         if(contact.name.toLowerCase().includes(this.CercaPersona.toLowerCase())){
+        //             contact.visible === true
+        //         }else{
+        //             contact.visible === false;
+        //         }
+        //     })
+        // },
+        show(){
+            show == true
         }
-    }
+    },
+
+    computed: {
+        Find(){
+            return this.contacts.filter((contact)=>contact.name.toLowerCase().includes(this.CercaPersona.toLowerCase())
+            )
+        }
+    },
 })
 
 
